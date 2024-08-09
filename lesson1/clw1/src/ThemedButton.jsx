@@ -3,7 +3,6 @@ import { ThemeContext, themes } from './them-context';
 
 class ThemedButton extends Component {
   render() {
-    const context = this.context;
     return (
       <button
         className="btn"
