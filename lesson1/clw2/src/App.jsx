@@ -4,12 +4,14 @@ import { UserDataContext } from './them-context';
 
 class App extends Component {
   state = {
-    name: 'Nikola Tesla',
-    avatar_url: 'https://avatars3.githubusercontent.com/u10001'
+    userData: {
+      name: 'Nikola Tesla',
+      avatar_url: 'https://avatars3.githubusercontent.com/u10001'
+    },
   }
   render() {
     return (
-      <UserDataContext.Provider value={this.state}>
+      <UserDataContext.Provider value={this.state.userData}>
         <div className="page">
           <Header />
         </div>
