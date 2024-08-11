@@ -11,7 +11,7 @@ class ThemedButton extends Component {
           background: this.context.background,
           color: this.context.fontColor,
         }}
-      >{this.props.children}</button>
+      />
     );
   }
 }
