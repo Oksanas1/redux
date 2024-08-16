@@ -1,10 +1,10 @@
 import { legacy_createStore as createStore } from 'redux';
 
-export const incrementAction = {
+export const increment = {
   type: 'COUNTER/INCREMENT',
 };
 
-export const decrementAction = {
+export const decrement = {
   type: 'DECREMENT',
 };
 
@@ -20,3 +20,6 @@ const counterReducer = (state = 0, action) => {
 };
 
 export const store = createStore(counterReducer);
+
+store.dispatch(increment);
+store.dispatch(decrement);
