@@ -1,16 +1,16 @@
 import { legacy_createStore as createStore } from 'redux';
 
-export const increment= {
-  type: 'INCREMENT',
+export const incrementAction = {
+  type: 'COUNTER/INCREMENT',
 };
 
-export const decrement = {
+export const decrementAction = {
   type: 'DECREMENT',
 };
 
 const counterReducer = (state = 0, action) => {
   switch(action.type) {
-    case 'INCREMENT':
+    case 'COUNTER/INCREMENT':
       return state + 1;
     case 'DECREMENT':
       return state - 1;
