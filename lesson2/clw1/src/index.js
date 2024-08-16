@@ -1,9 +1,10 @@
 import { legacy_createStore as createStore } from 'redux';
 
-const increment= {
+export const increment= {
   type: 'COUNTER/INCREMENT',
 };
-const decrement = {
+
+export const decrement = {
   type: 'COUNTER/DECREMENT',
 };
 
@@ -18,4 +19,4 @@ const counterReducer = (state = 0, action) => {
   }
 };
 
-const store = createStore(counterReducer);
+export const store = createStore(counterReducer);
