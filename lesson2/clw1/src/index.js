@@ -1,18 +1,18 @@
 import { legacy_createStore as createStore } from 'redux';
 
 export const increment= {
-  type: 'COUNTER/INCREMENT',
+  type: 'INCREMENT',
 };
 
 export const decrement = {
-  type: 'COUNTER/DECREMENT',
+  type: 'DECREMENT',
 };
 
 const counterReducer = (state = 0, action) => {
   switch(action.type) {
-    case 'COUNTER/INCREMENT':
+    case 'INCREMENT':
       return state + 1;
-    case 'COUNTER/DECREMENT':
+    case 'DECREMENT':
       return state - 1;
     default:
       return state;
