@@ -1,5 +1,5 @@
 const initialState = {
-    users: [],
+    usersList: [],
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -8,12 +8,12 @@ const usersReducer = (state = initialState, action) => {
         case 'USERS/ADD':
             return {
                 ...state,
-                users: state.users.concat(user),
+                usersList: state.usersList.concat(user),
             };
         case 'USERS/DELETE':
             return {
                 ...state,
-                users: state.users.filter(user => user.id !== id),
+                usersList: state.usersList.filter(user => user.id !== id),
             };
         default:
             return state;
