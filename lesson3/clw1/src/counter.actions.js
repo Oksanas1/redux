@@ -1,7 +1,7 @@
-export const INCREMENT_COUNTER = 'COUNTER/INCREMENT';
-export const DECREMENT_COUNTER = 'COUNTER/DECREMENT';
-export const RESET_COUNTER = 'COUNTER/RESET';
+export const INCREMENT = 'COUNTER/INCREMENT';
+export const DECREMENT = 'COUNTER/DECREMENT';
+export const RESET = 'COUNTER/RESET';
 
-export const incrementCounter = () => ({type: INCREMENT_COUNTER});
-export const decrementCounter = () => ({type: DECREMENT_COUNTER});
-export const resetCounter = () => ({type: RESET_COUNTER});
+export const increment = () => ({type: INCREMENT});
+export const decrement = () => ({type: DECREMENT});
+export const reset = () => ({type: RESET});
