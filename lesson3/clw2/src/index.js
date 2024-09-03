@@ -1,5 +1,5 @@
 import store from './store';
-import { decrement, increment } from './counter.actions'
+import { decrement, increment } from './counter'
 
 store.subscribe(() => {
     console.log('Текущее состояние:', store.getState());
