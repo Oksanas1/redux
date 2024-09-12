@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as counterActions from '../counter.actions';
 
-const Counter = ({counter, increment, decrement, reset}) => {
+const Counter = ({counter, increment, decrement, reset }) => {
   return (
     <div class="counter">
       <button class="counter__button" onClick={decrement}>-</button>
@@ -18,12 +18,12 @@ const mapState = state => {
   });
 }
 
-const mapDispach = {
+const mapDispatch = {
     increment: counterActions.increment,
     decrement: counterActions.decrement,
     reset: counterActions.reset,
 };
 
-const connector = connect(mapState, mapDispach);
+const connector = connect(mapState, mapDispatch);
 
 export default connector(Counter);
