@@ -1,37 +1,27 @@
-import React, { useState, useEffect  } from "react";
+import React from "react";
 import { connect } from 'react-redux';
-import { prevUsers, nextUsers } from './users.actions';
+import { prevPage, nextPage } from './users.actions';
 import Pagination from "./Pagination";
 import User from "./User";
 
-const UsersList = ({ users, currentPage, nextUsers, prevUsers }) => {
-  const [firstIndexOfUserForPage, setFirstIndexOfUserForPage] = useState(currentPage * 3);
-  const [itemPerPage, setItemPerPage] = useState(3);
-  const [userList, setUserList] = useState(users.slice(0, 3));
-
-  useEffect(() => {
-    setFirstIndexOfUserForPage(currentPage * 3);
-    setItemPerPage(users.length - firstIndexOfUserForPage > 2 ? 3 : users.length - firstIndexOfUserForPage);
-    setUserList(users.slice(firstIndexOfUserForPage, firstIndexOfUserForPage + itemPerPage));
-  }, [currentPage, firstIndexOfUserForPage]);
+const UsersList = ({ users, currentPage, goPrev, goNext, itemsPerPage }) => {
+  const startIndex = currentPage * itemsPerPage;
+  const paginatedUsers = users.slice(startIndex, startIndex + itemsPerPage);
 
   return (
     <div>
       <Pagination
-        goPrev={prevUsers}
-        goNext={nextUsers}
+        goPrev={goPrev}
+        goNext={goNext}
+        currentPage={currentPage}
         totalItems={users.length}
-        currentPage={currentPage + 1}
-        itemPerPage={firstIndexOfUserForPage}
+        itemsPerPage={itemsPerPage}
       />
-      {
-        userList.map(({id, age, name}) => (
-          <User
-            key={id}
-            age={age}
-            name={name}
-          />))
-      }
+      <ul className="users">
+        {paginatedUsers.map(user => (
+          <User key={user.id} {...user} />
+        ))}
+      </ul>
     </div>
   );
 };
@@ -40,12 +30,13 @@ const mapStateToProps = (state) => {
   return ({
     users: state.usersList,
     currentPage: state.currentPage,
+    itemsPerPage: 3,
   });
 };
 
 const mapDispatchToProps = {
-  prevUsers,
-  nextUsers,
+  goPrev: prevPage,
+  goNext: nextPage,
 }
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
