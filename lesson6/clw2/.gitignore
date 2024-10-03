@@ -1,0 +1,4 @@
+/node_modules
+/dist
+.VS_Code
+package-lock.json
