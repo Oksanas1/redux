@@ -2,7 +2,7 @@ import { applyMiddleware, compose, combineReducers, legacy_createStore as create
 import { thunk } from 'redux-thunk';
 import usersReducer from './users/users.reducer';
 
-const logger = store => next => action => {
+const middleware = store => next => action => {
   console.group(action.type);
   console.info('dispatching', action);
   let result = next(action);
@@ -18,7 +18,7 @@ const reducer = combineReducers({
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducer, composeEnhancers(
-  applyMiddleware(thunk, logger)
+  applyMiddleware(thunk, middleware)
 ));
 
 export default store;
