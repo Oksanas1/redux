@@ -2,7 +2,7 @@ import { applyMiddleware, compose, combineReducers, legacy_createStore as create
 import { thunk } from 'redux-thunk';
 import usersReducer from './users/users.reducer';
 
-const middleware = store => next => action => {
+export const middleware = store => next => action => {
   console.group(action.type);
   console.info('dispatching', action);
   let result = next(action);
