@@ -1,4 +1,4 @@
-import { applyMiddleware, legacy_createStore as createStore } from 'redux';
+import { applyMiddleware, compose, legacy_createStore as createStore } from 'redux';
 import counterReducer from './counter.reducer';
 
 const logger = store => next => action => {
@@ -11,6 +11,7 @@ const logger = store => next => action => {
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(counterReducer, composeEnhancers(
   applyMiddleware(logger)
 ));
