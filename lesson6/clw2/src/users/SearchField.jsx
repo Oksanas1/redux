@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as usersActions from "./users.actions";
 
-const SearchField = ({showSpinner, fetchUserData}) => {
+const SearchField = ({fetchUserData}) => {
   const [userName, setUserName] = useState('');
 
   const onChange = value => {
@@ -26,7 +26,6 @@ const SearchField = ({showSpinner, fetchUserData}) => {
 };
 
 const mapDispatchToProps = {
-  showSpinner: usersActions.showSpinner,
   fetchUserData: usersActions.fetchUserData,
 };
 
