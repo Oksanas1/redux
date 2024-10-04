@@ -3,6 +3,9 @@ import { thunk } from 'redux-thunk';
 import usersReducer from './users/users.reducer';
 
 const logger = store => next => action => {
+  if (typeof action === 'function') {
+    return action(store.dispatch, store.getState());
+  }
   console.group(action.type);
   console.info('dispatching', action);
   let result = next(action);
@@ -11,6 +14,6 @@ const logger = store => next => action => {
   return result;
 };
 
-const store = createStore(usersReducer, applyMiddleware(thunk, logger));
+const store = createStore(usersReducer, applyMiddleware(logger));
 
 export default store;

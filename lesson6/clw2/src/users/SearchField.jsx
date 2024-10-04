@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as usersActions from "./users.actions";
 
-const SearchField = ({fetchUserData}) => {
+const SearchField = ({fetchUser}) => {
   const [userName, setUserName] = useState('');
 
   const onChange = value => {
@@ -10,7 +10,7 @@ const SearchField = ({fetchUserData}) => {
   };
 
   const handleChange = () => {
-    fetchUserData(userName);
+    fetchUser(userName);
   };
 
   return (
@@ -26,7 +26,7 @@ const SearchField = ({fetchUserData}) => {
 };
 
 const mapDispatchToProps = {
-  fetchUserData: usersActions.fetchUserData,
+  fetchUser: usersActions.fetchUserData,
 };
 
 export default connect(null, mapDispatchToProps)(SearchField);
