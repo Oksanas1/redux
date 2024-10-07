@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as weatherActions from "./weather.actions";
 
-const Weather = ({weatherData, getWeatherData}) => {
+const Weather = ({cities, getWeatherData}) => {
   useEffect(() => {
     getWeatherData();
   }, []);
@@ -11,8 +11,8 @@ const Weather = ({weatherData, getWeatherData}) => {
     <main className="weather">
       <h1 className="weather__title">Weather data</h1>
       <ul className="cities-list">
-        { weatherData &&
-          weatherData.map(({id, name, temperature}) => (
+        { cities &&
+          cities.map(({id, name, temperature}) => (
             <li className="city" key={id}>
               <span className="city__name">{name}</span>
               <span className="city__temperature">{temperature} F</span>
@@ -24,8 +24,8 @@ const Weather = ({weatherData, getWeatherData}) => {
   );
 };
 
-const mapStateToProps = ({weatherData}) => {
-  return ({weatherData})
+const mapStateToProps = ({cities}) => {
+  return ({cities})
 }
 
 const mapDispatchToProps = {
