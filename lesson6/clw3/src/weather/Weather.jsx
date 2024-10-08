@@ -24,7 +24,7 @@ const Weather = ({cities, getWeatherData}) => {
 };
 
 const mapStateToProps = (state) => {
-  return ({cities: state.weather.cities})
+  return ({cities: state.cities})
 }
 
 const mapDispatchToProps = {

@@ -8,7 +8,6 @@ export const getWeatherData = () => {
       fetch(baseUrl)
         .then(response => {
           if (response.ok) {
-            
             return response.json();
           }
 
