@@ -4,21 +4,24 @@ export const GET_WEATHER_DATA = 'GET_WEATHER_DATA';
 
 export const getWeatherData = () => {
   return function(dispatch) {
-    fetch(`${baseUrl}`).then(response => {
-      if(response.ok) {
-        return response.json();
-      }
-      throw new Error();
-    })
-      .then(weatherData => {
-        return dispatch({
-          type: GET_WEATHER_DATA,
-          payload: {weatherData},
-        });
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  }
-};
+    try {
+      fetch(baseUrl)
+        .then(response => {
+          if (response.ok) {
+            
+            return response.json();
+          }
 
+          throw new Error();
+        })
+        .then(cities => {
+          dispatch({
+            type: GET_WEATHER_DATA,
+            payload: { cities },
+          });
+        });
+    } catch (error) {
+      console.error('Error fetching weather data:', error);
+    }
+  };
+};
