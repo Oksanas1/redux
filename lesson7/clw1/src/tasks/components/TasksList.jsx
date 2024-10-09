@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from "react-redux";
-import { useDispatch } from 'react-redux';
+import PropTypes from "prop-types";
 import Task from './Task';
 import { getTasksList, toggleIsFinish, handleDelete } from '../tasks.actions'
 
@@ -21,6 +21,17 @@ const TasksList = ({tasksList, getTasksList, toggleIsFinish, handleDelete}) => {
           />)}
     </ul>
   );
+};
+
+TasksList.propTypes = {
+  tasksList: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    isDone: PropTypes.bool.isRequired,
+  })),
+  getTasksList: PropTypes.func.isRequired,
+  toggleIsFinish: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {

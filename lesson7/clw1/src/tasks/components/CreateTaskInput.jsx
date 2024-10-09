@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 import { createTask } from '../tasks.actions';
 
 const CreateTaskInput = ({createTask}) => {
@@ -20,6 +21,10 @@ const CreateTaskInput = ({createTask}) => {
       <button className="btn create-task__btn" onClick={() => createTask({ text: newTaskText, isDone: false, })}>Create</button>
     </div>
   );
+};
+
+CreateTaskInput.propTypes = {
+  createTask: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = {

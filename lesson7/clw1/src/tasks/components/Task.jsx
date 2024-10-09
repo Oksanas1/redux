@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
 const Task = ({task, toggleCheckboxIsFinish, handleDelete}) => {
   const nameClass = task.isDone ? "list-item list-item_done" :  "list-item";
@@ -16,5 +17,15 @@ const Task = ({task, toggleCheckboxIsFinish, handleDelete}) => {
     </li>
   );
 };
+
+Task.propTypes = {
+  task: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    isDone: PropTypes.bool.isRequired,
+  }),
+  toggleCheckboxIsFinish: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired,
+}
 
 export default Task;
