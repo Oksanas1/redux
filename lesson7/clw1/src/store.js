@@ -8,7 +8,7 @@ const reducer = combineReducers({
   tasksList: tasksReducer,
 });
 
-const store = createStore(tasksReducer, composeEnhancers(
+const store = createStore(reducer, composeEnhancers(
   applyMiddleware(thunk)
 ));
 

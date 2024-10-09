@@ -1,2 +1,1 @@
-export const usersListSelectors = state => state.usersList;
-export const currentPageSelectors = state => state.currentPage;
+export const taskListSelectors = state => state.tasksList.tasksList;

@@ -12,9 +12,12 @@ const tasksReducer = (state = initialState, action) => {
         tasksList: action.payload.tasksList,
       });
     case TASKS_UPDATE:
+      const updateTaskList = state
+        .tasksList.map(task => task.id === action.payload.task.id ? action.payload.task : task)
+        .sort((a, b) => a.isDone - b.isDone);
       return ({
         ...state,
-        tasksList: state.tasksList.map(task => task.id === action.payload.task.id ? action.payload.task : task).sort((a, b) => a.isDone - b.isDone),
+        tasksList: updateTaskList,
       });
     case TASKS_DELETE:
       return ({

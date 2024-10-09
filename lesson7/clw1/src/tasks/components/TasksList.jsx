@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Task from './Task';
 import { getTasksList, toggleIsFinish, handleDelete } from '../tasks.actions'
+import { taskListSelectors } from '../tasks.selectors';
 
 const TasksList = ({tasksList, getTasksList, toggleIsFinish, handleDelete}) => {
   useEffect(() => {
@@ -36,7 +37,7 @@ TasksList.propTypes = {
 
 const mapStateToProps = state => {
   return ({
-    tasksList: state.tasksList,
+    tasksList: taskListSelectors(state),
   });
 };
 
